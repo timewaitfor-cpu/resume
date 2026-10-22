@@ -1,0 +1,560 @@
+/* ==========================================================================
+   自訂主題樣式（搭配 Bootstrap 5 CDN 使用）
+   設計方向：深海軍藍為主、暖銅色點綴，搭配明體標題，
+            呈現出版品式的沉穩與專業感。
+   提示：CSS 權重 (0, 1, 0) = id、(0, 0, 1) = class、(0, 0, 0) = element
+   ========================================================================== */
+
+:root {
+  /* 品牌色 */
+  --brand-ink: #16202e;
+  --brand-navy: #1c3a5e;
+  --brand-navy-dark: #14293f;
+  --brand-bronze: #a9702f;
+  --brand-bronze-soft: #d9c19c;
+
+  /* 中性色 */
+  --paper: #faf9f7;
+  --line: #e4e2dd;
+  --muted-text: #6b7280;
+
+  /* 字體 */
+  --font-serif: "Noto Serif TC", "Songti TC", "Source Han Serif TC", "Times New Roman", serif;
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+
+  /* Bootstrap 變數覆寫 */
+  --bs-primary: #1c3a5e;
+  --bs-primary-rgb: 28, 58, 94;
+  --bs-link-color: #1c3a5e;
+  --bs-link-color-rgb: 28, 58, 94;
+  --bs-link-hover-color: #14293f;
+  --bs-link-hover-color-rgb: 20, 41, 63;
+  --bs-body-color: #22272e;
+}
+
+/* ==========================================================================
+   基礎樣式
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--bs-body-color);
+  background-color: var(--paper);
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  color: var(--brand-ink);
+  letter-spacing: 0.02em;
+}
+
+a {
+  transition: color 0.18s ease;
+}
+
+/* ==========================================================================
+   覆寫 Bootstrap 主要色為品牌軍藍
+   ========================================================================== */
+
+.btn-primary {
+  --bs-btn-bg: var(--brand-navy);
+  --bs-btn-border-color: var(--brand-navy);
+  --bs-btn-hover-bg: var(--brand-navy-dark);
+  --bs-btn-hover-border-color: var(--brand-navy-dark);
+  --bs-btn-active-bg: var(--brand-navy-dark);
+  --bs-btn-active-border-color: var(--brand-navy-dark);
+  --bs-btn-disabled-bg: #8a9bb0;
+  --bs-btn-disabled-border-color: #8a9bb0;
+  --bs-btn-focus-shadow-rgb: 28, 58, 94;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-navy);
+  --bs-btn-border-color: var(--brand-navy);
+  --bs-btn-hover-bg: var(--brand-navy);
+  --bs-btn-hover-border-color: var(--brand-navy);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--brand-navy);
+  --bs-btn-active-border-color: var(--brand-navy);
+  --bs-btn-active-color: #fff;
+  --bs-btn-focus-shadow-rgb: 28, 58, 94;
+}
+
+.bg-primary {
+  background-color: var(--brand-navy) !important;
+}
+
+.text-bg-primary {
+  color: #fff !important;
+  background-color: var(--brand-navy) !important;
+}
+
+.text-primary {
+  color: var(--brand-bronze) !important;
+}
+
+.border-primary {
+  border-color: var(--brand-navy) !important;
+}
+
+/* ==========================================================================
+   導覽列
+   ========================================================================== */
+
+.site-nav {
+  background-color: var(--brand-ink);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: saturate(140%) blur(6px);
+}
+
+.site-nav .navbar-brand {
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+}
+
+.site-nav .navbar-brand .bi {
+  color: var(--brand-bronze-soft);
+}
+
+.site-nav .nav-link {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.94rem;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus {
+  color: #fff;
+}
+
+.site-nav .nav-link.active {
+  color: #fff;
+}
+
+.site-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.35rem;
+  height: 2px;
+  background-color: var(--brand-bronze);
+}
+
+/* ==========================================================================
+   頁首 Hero
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  background-color: var(--brand-ink);
+  background-image:
+    radial-gradient(900px 400px at 86% -25%, rgba(169, 112, 47, 0.34), transparent 62%),
+    linear-gradient(155deg, #16202e 0%, #1c3a5e 100%);
+  border-bottom: 3px solid var(--brand-bronze);
+}
+
+.hero-section h1 {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  color: #fff;
+}
+
+/* Hero 內的標題一律維持白字，避免被全域標題色蓋掉 */
+.hero-section h1,
+.hero-section h2,
+.hero-section h3 {
+  color: #fff;
+}
+
+.hero-section .lead {
+  max-width: 40rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.9;
+}
+
+.hero-kicker {
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-kicker .bi {
+  color: var(--brand-bronze-soft);
+}
+
+.hero-role {
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--brand-bronze-soft);
+  font-family: var(--font-sans);
+}
+
+.hero-chip {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid rgba(217, 193, 156, 0.45);
+  border-radius: 2rem;
+  font-size: 0.83rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.88);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.hero-chip .bi {
+  color: var(--brand-bronze-soft);
+}
+
+.hero-section img.rounded-circle {
+  border-color: rgba(217, 193, 156, 0.85) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.38);
+}
+
+/* ==========================================================================
+   區段標題
+   ========================================================================== */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--brand-ink);
+  padding-bottom: 0.7rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-title .bi {
+  color: var(--brand-bronze);
+  font-size: 1.3rem;
+}
+
+.section-title .badge {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   卡片
+   ========================================================================== */
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  box-shadow: none;
+  background-color: #fff;
+}
+
+.card-body {
+  padding: 1.4rem 1.5rem;
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: 1px solid var(--line);
+  color: var(--brand-ink);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.5rem;
+}
+
+.card-header .bi {
+  color: var(--brand-bronze);
+}
+
+/* 卡片內的小標題 */
+.card-body h3 .bi,
+h3.h5 .bi {
+  color: var(--brand-bronze);
+}
+
+/* CTA 區塊 */
+.cta-panel {
+  background-color: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(28, 58, 94, 0.06);
+}
+
+/* ==========================================================================
+   個人資料清單
+   ========================================================================== */
+
+.profile-list dt {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted-text) !important;
+}
+
+.profile-list dd {
+  font-weight: 500;
+}
+
+.profile-list dt,
+.profile-list dd {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-list dt:last-of-type,
+.profile-list dd:last-of-type {
+  border-bottom: 0;
+}
+
+/* ==========================================================================
+   工作經歷時間軸
+   ========================================================================== */
+
+.timeline {
+  position: relative;
+  padding-left: 2.6rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.9rem;
+  bottom: 0.9rem;
+  left: 0.9rem;
+  width: 1px;
+  background-color: var(--line);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 1.15rem;
+  left: -2.6rem;
+  width: 1.85rem;
+  height: 1.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid var(--brand-navy);
+  color: var(--brand-navy);
+  font-size: 0.82rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.timeline-item:hover .timeline-marker {
+  background-color: var(--brand-navy);
+  color: #fff;
+}
+
+.timeline .card-title {
+  font-size: 1.1rem;
+}
+
+.timeline .badge.text-bg-primary {
+  color: var(--brand-navy) !important;
+  background-color: #f2f5f9 !important;
+  border: 1px solid #d9e2ec;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   技能 / 語言 / 工具
+   ========================================================================== */
+
+.language-table {
+  margin-bottom: 0;
+}
+
+.language-table th,
+.language-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 0.6rem 0.5rem;
+}
+
+.language-table tbody tr:last-child th,
+.language-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.language-table thead th {
+  background-color: transparent;
+  border-bottom: 1px solid var(--brand-ink);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--muted-text);
+}
+
+.language-table tbody th {
+  white-space: nowrap;
+  font-family: var(--font-serif);
+}
+
+.language-table td {
+  font-size: 0.875rem;
+  color: var(--brand-navy);
+}
+
+.skill-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px dashed var(--line);
+}
+
+.skill-list li:last-child {
+  border-bottom: 0;
+}
+
+.skill-label {
+  flex: 0 0 6.5rem;
+  color: var(--muted-text);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.badge.text-bg-light.border {
+  color: var(--brand-navy) !important;
+  background-color: #fff !important;
+  border-color: var(--line) !important;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   附件證書縮圖
+   ========================================================================== */
+
+.cert-img {
+  max-height: 320px;
+  object-fit: contain;
+  background-color: #f7f7f5;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   頁尾
+   ========================================================================== */
+
+.site-footer {
+  background-color: var(--brand-ink);
+  border-top: 3px solid var(--brand-bronze);
+}
+
+.site-footer .text-secondary {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.site-footer .link-light {
+  color: rgba(255, 255, 255, 0.78) !important;
+}
+
+.site-footer .link-light:hover {
+  color: #fff !important;
+}
+
+.site-footer .link-info {
+  color: var(--brand-bronze-soft) !important;
+}
+
+.site-footer .link-info:hover {
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   列印 / 轉 PDF 樣式
+   ========================================================================== */
+
+@media print {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-color: #fff;
+    font-size: 11pt;
+    line-height: 1.6;
+  }
+
+  .site-nav {
+    display: none !important;
+  }
+
+  /* 標籤與按鈕改為白底可印樣式，避免白字看不見 */
+  .hero-chip {
+    color: #000 !important;
+    border-color: #999 !important;
+    background-color: transparent !important;
+  }
+
+  .btn {
+    color: #000 !important;
+    background-color: transparent !important;
+    border-color: #999 !important;
+    box-shadow: none !important;
+  }
+
+  .hero-section {
+    background: #fff !important;
+    background-image: none !important;
+    border-bottom: 1px solid #000;
+    color: #000 !important;
+  }
+
+  .hero-section h1,
+  .hero-section .lead,
+  .hero-kicker,
+  .hero-role {
+    color: #000 !important;
+  }
+
+  .hero-section img.rounded-circle {
+    border-color: #ccc !important;
+    box-shadow: none !important;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  .section-title {
+    break-after: avoid;
+  }
+
+  a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+
+  main.container {
+    padding-top: 1rem !important;
+  }
+}
